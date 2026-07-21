@@ -26,22 +26,31 @@ if(isset($_GET['delete']) && $_SESSION['role_id'] == 1){
 <p>Your Role: <b><?php echo ($_SESSION['role_id']==1) ? "Admin" : "User"; ?></b></p>
 <a href="logout.php">Logout</a>
 
+<form method="GET" style="margin-bottom:10px;">
+    <input type="text" name="search" placeholder="Search by Name or Email" value="<?php echo isset($_GET['search'])?$_GET['search']:''; ?>">
+    <button type="submit">Search</button>
+</form>
+
 <h3>All Users List</h3>
 <table border="1" cellpadding="10">
-<tr>
-    <th>ID</th><th>Name</th><th>Email</th><th>Role</th>
-    <?php if($_SESSION['role_id']==1) echo "<th>Action</th>"; ?>
-</tr>
 <?php
-$result = $conn->query("SELECT u.id, u.name, u.email, r.role_name FROM users u JOIN roles r ON u.role_id = r.id");
+$search = isset($_GET['search']) ? $_GET['search'] : '';
+$sql = "SELECT u.id, u.name, u.email, r.role_name 
+        FROM users u 
+        JOIN roles r ON u.role_id = r.id 
+        WHERE u.name LIKE '%$search%' OR u.email LIKE '%$search%'";
+$result = $conn->query($sql);
+?>
+<?php
+
 while($row = $result->fetch_assoc()){
     echo "<tr>
             <td>{$row['id']}</td>
             <td>{$row['name']}</td>
             <td>{$row['email']}</td>
             <td>{$row['role_name']}</td>";
-    if($_SESSION['role_id']==1 && $row['id'] != $_SESSION['user_id']) 
-        echo "<td><a href='dashboard.php?delete={$row['id']}' onclick='return confirm(\"Delete this user?\")' style='color:red'>Delete</a></td>";
+    if($_SESSION['role_id']==1 && $row['id'] != $_SESSION['user_id'])
+        echo "<td><a href='edit_user.php?id={$row['id']}'>Edit</a> | <a href='dashboard.php?delete={$row['id']}' onclick='return confirm(\"Delete this user?\")'>Delete</a></td>";
     elseif($_SESSION['role_id']==1)
         echo "<td>-</td>";
     echo "</tr>";
