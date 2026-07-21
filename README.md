@@ -1,6 +1,4 @@
 
---Final Push**
-```bash# User Management System - PHP + MySQL
 
 A simple and secure User Management System built using PHP, MySQL and Bootstrap.
 
