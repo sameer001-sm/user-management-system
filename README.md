@@ -37,8 +37,8 @@ A simple and secure User Management System built using PHP, MySQL and Bootstrap.
 
 ### Default Login
 **Admin:**
-Email: admin@gmail.com
-Password: admin123
+Email: sameerkamal822@gmail.com
+Password: sam
 
 **User:**
 Email: test@gmail.com
