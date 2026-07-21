@@ -22,6 +22,7 @@ if(isset($_GET['delete']) && $_SESSION['role_id'] == 1){
 <html>
     <body style="font-family:Arial; padding:20px;">
 <h2>Welcome, <?php echo $_SESSION['name']; ?>!</h2>
+<a href="profile.php">Edit Profile</a>
 <p>Your Role: <b><?php echo ($_SESSION['role_id']==1) ? "Admin" : "User"; ?></b></p>
 <a href="logout.php">Logout</a>
 
