@@ -1,9 +1,8 @@
-
+# User Management System - PHP + MySQL
 
 A simple and secure User Management System built using PHP, MySQL and Bootstrap.
 
 ## Features
-
 1.  **User Registration & Login**
     - Password hashing using `password_hash()`
     - Session management
@@ -21,26 +20,3 @@ A simple and secure User Management System built using PHP, MySQL and Bootstrap.
 4.  **Security**
     - Prepared Statements to prevent SQL Injection
     - Role based access: Admin / User
-
-## Tech Stack
-
-- **Frontend**: HTML5, CSS3, Bootstrap
-- **Backend**: PHP 8.1
-- **Database**: MySQL
-- **Server**: XAMPP / WAMP
-
-## Database Setup
-
-1.  Create database: `user_system`
-2.  Import `database.sql` file
-3.  Tables: `users`, `user_roles`, `roles`
-
-### Default Login
-**Admin:**
-Email: sameerkamal822@gmail.com
-Password: sam
-
-**User:**
-Email: test@gmail.com
-Password: test123
-
